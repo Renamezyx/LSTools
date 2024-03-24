@@ -1,0 +1,18 @@
+{
+    "baidu": {
+        "Host": "sp1.baidu.com",
+        "Connection": "keep-alive",
+        "sec-ch-ua": "\"Google Chrome\";v=\"123\", \"Not:A-Brand\";v=\"8\", \"Chromium\";v=\"123\"",
+        "sec-ch-ua-mobile": "?0",
+        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/123.0.0.0 Safari/537.36",
+        "sec-ch-ua-platform": "\"Windows\"",
+        "Accept": "image/avif,image/webp,image/apng,image/svg+xml,image/*,*/*;q=0.8",
+        "Sec-Fetch-Site": "same-site",
+        "Sec-Fetch-Mode": "no-cors",
+        "Sec-Fetch-Dest": "image",
+        "Referer": "https://www.baidu.com/s?ie=utf-8&f=8&rsv_bp=1&rsv_idx=1&tn=baidu&wd=python%E5%AF%BC%E5%8C%85%E9%97%AE%E9%A2%98&fenlei=256&oq=python%25E5%25AF%25BC%25E5%258C%2585%25E9%2597%25AE%25E9%25A2%2598&rsv_pq=894217ef004413c8&rsv_t=509cAZcwVC49vs8AKU1BdmUyHoNhqwsoQnRxAiIc1IrpTrrxw8XAuyCppBs&rqlang=cn&rsv_enter=0&rsv_dl=tb&rsv_btype=t",
+        "Accept-Encoding": "gzip, deflate, br, zstd",
+        "Accept-Language": "zh-CN,zh;q=0.9",
+        "Cookie": "BIDUPSID=8B498873ECFB91256731C3D46B10A3FE; PSTM=1710074163; BAIDUID=8B498873ECFB9125A32A6A6CC625FD38:FG=1; H_PS_PSSID=40008_40212_40079_40365_40351_40369_40379_40416_40310_40298_40466_40458_40481_40317_40514; BDORZ=B490B5EBF6F3CD402E515D22BCDA1598; BAIDUID_BFESS=8B498873ECFB9125A32A6A6CC625FD38:FG=1; ZFY=3UsGEeVfrKyvWk1dQqxfFz1qQZrk2Jz:Agtm4V954ij0:C; BA_HECTOR=81ahakala081008021012180u9venk1ivvjbj1s; PSINO=6; delPer=0"
+    }
+}

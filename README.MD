@@ -12,7 +12,7 @@ LSTools 采用前后端代码分离架构
 
 数据库Mysql 安装在远程服务器，实现数据共享 技术栈：`MySql`
 
-## TODO
+## Todo
 
 ## About
 

@@ -1,8 +1,8 @@
 # LiveStudio Tools
 
-## 功能
+## Feature
 
-## 项目说明
+## Description
 
 LSTools 采用前后端代码分离架构
 
@@ -13,5 +13,11 @@ LSTools 采用前后端代码分离架构
 数据库Mysql 安装在远程服务器，实现数据共享 技术栈：`MySql`
 
 ## TODO
+
+## About
+
+author : Therzyx
+
+email : therzyx@gmail.com
 
 ## ...

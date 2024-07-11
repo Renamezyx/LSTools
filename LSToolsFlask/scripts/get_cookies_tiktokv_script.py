@@ -3,7 +3,7 @@ import sys
 
 from urllib.parse import urlparse
 from mitmproxy import http
-
+from utils.json_file_handler import JSONFileHandler
 
 def get_project_root():
     # 获取根目录 不受运行目录影响
@@ -14,8 +14,7 @@ def get_project_root():
 
 
 sys.path.append(os.path.join(get_project_root()))
-from common.logger_base import logger
-from utils.json_file_handler import JSONFileHandler
+
 
 
 def request(flow: http.HTTPFlow):
@@ -25,5 +24,4 @@ def request(flow: http.HTTPFlow):
         key = "tiktokv"
         value = dict(flow.request.headers)
         value["Host"] = flow.request.host_header
-        logger.info(f'{key}: {value}')
         JSONFileHandler.update_json(os.path.join(get_project_root(), "headers.json"), key, value)

@@ -1,7 +1,7 @@
 import json
 import os
 
-from common.logger_base import logger
+
 from common.request_base import request
 from config import get_project_root
 from enums.studio_battle_enum import BattleStatusEnum

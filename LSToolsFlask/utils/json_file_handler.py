@@ -1,7 +1,7 @@
 import json
 import os
 
-from common.logger_base import logger
+# from common.logger_base import logger
 
 
 class JSONFileHandler:
@@ -34,7 +34,7 @@ class JSONFileHandler:
         try:
             with open(file_path, 'w') as file:
                 json.dump(data, file, indent=4)
-                logger.info(f"数据已成功写入到文件 '{file_path}'.")
+                # logger.info(f"数据已成功写入到文件 '{file_path}'.")
         except Exception as e:
             print(f"写入文件 '{file_path}' 时发生错误: {e}")
             raise Exception(f"写入文件 '{file_path}' 时发生错误: {e}")
@@ -48,7 +48,7 @@ class JSONFileHandler:
         :param value: 要更新的值
         """
         if not os.path.exists(file_path):
-            logger.error(f"{file_path} FileNotFoundError")
+            # logger.error(f"{file_path} FileNotFoundError")
             raise FileNotFoundError
         data = JSONFileHandler.read_json_file(file_path)
         if data:

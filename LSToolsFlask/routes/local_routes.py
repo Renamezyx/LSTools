@@ -1,15 +1,12 @@
 from flask import jsonify
-from flask_socketio import SocketIO, emit
 
+from routes import api
 from services import local_service
 from response_base import response
-from flask_restx import Api, Resource
+from flask_restx import Resource
 
-api = Api(version="1.0", title="LSTools", description="")
-socketio = SocketIO()
 ns_test = api.namespace('Test', description='Test operations')
 ns_local = api.namespace('Local', description='Local operations')
-ns_socket = api.namespace('socket', description='Socket operations')
 
 
 @ns_test.route('/test')
@@ -90,21 +87,15 @@ class GenerateFinshPK(Resource):
         response.message = res if res is not None else ''
         return jsonify(response.run_speed)
 
-
-@socketio.on('connect')
-def handle_connect():
-    print('Client connected')
-    emit('message', 'Connected to server')
-
-routes = [
-    ('/test', Test),
-    ('/open_log_dir', OpenLogsDir),
-    ('/open_language_dir', OpenLanguageDir),
-    ('/switch_branch', SwitchBranch),
-    ('/update_effects', UpdateEffects),
-    ('/clear_screen', ClearScreen),
-    ('/generate_finsh_pk', GenerateFinshPK),
-]
-# 循环添加路由和对应的资源类
-for route, resource_class in routes:
-    api.add_resource(resource_class, route)
+# routes = [
+#     ('/test', Test),
+#     ('/open_log_dir', OpenLogsDir),
+#     ('/open_language_dir', OpenLanguageDir),
+#     ('/switch_branch', SwitchBranch),
+#     ('/update_effects', UpdateEffects),
+#     ('/clear_screen', ClearScreen),
+#     ('/generate_finsh_pk', GenerateFinshPK),
+# ]
+# # 循环添加路由和对应的资源类
+# for route, resource_class in routes:
+#     api.add_resource(resource_class, route)

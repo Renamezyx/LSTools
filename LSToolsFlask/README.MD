@@ -1,7 +1,7 @@
 ```shell
-pip freeze > requirements.tx
+pip freeze > requirements.txt
 ```
 
 ```shell
-pip install -r requirements.tx
+pip install -r requirements.txt
 ```

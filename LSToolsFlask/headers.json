@@ -1,18 +1,28 @@
 {
-    "baidu": {
-        "Host": "sp1.baidu.com",
-        "Connection": "keep-alive",
-        "sec-ch-ua": "\"Google Chrome\";v=\"123\", \"Not:A-Brand\";v=\"8\", \"Chromium\";v=\"123\"",
+    "tiktokv": {
+        "content-length": "0",
+        "accept": "application/x-protobuf",
+        "accept-encoding": "gzip, deflate, br",
+        "accept-language": "zh-CN",
+        "content-type": "application/x-protobuf",
+        "cookie": "store-idc=alisg, store-country-code=vn, store-country-code-src=uid, tt-target-idc=alisg, ttwid=1%7CH-ADivord7kHHSxdjn2cC3TQ9Yv8GNJQrY1Vs8WW_ww%7C1720527440%7C1a813400adfcb707eb077789be5b9a1b44d470f599e3f3176ce0dc9e30e22a0c, d_ticket=611afa5d1778bb0347739e205a86e0a736b58, multi_sids=7200687727124251675%3Af00bb128d2c8ab4e93fed4047f801519, cmpl_token=AgQQAPOFF-RO0rPTFfHJ810i_OyzCsycP5M3YNYVdQ, passport_auth_status=73219b87722b471ea055898fd5340e23%2C, passport_auth_status_ss=73219b87722b471ea055898fd5340e23%2C, tt_chain_token=ia1AxP8pXthpdFzidX6zxA==, passport_csrf_token=779eb919651b7242449291324197e15e, passport_csrf_token_default=779eb919651b7242449291324197e15e, sid_guard=f8576122f6bd765e39f8fdf004ddba89%7C1720527462%7C5183999%7CSat%2C+07-Sep-2024+12%3A17%3A41+GMT, uid_tt=029d17b740f68a972abacfbb1f199cb9d396319d54e3d04cfc22664a5db9289a, uid_tt_ss=029d17b740f68a972abacfbb1f199cb9d396319d54e3d04cfc22664a5db9289a, sid_tt=f8576122f6bd765e39f8fdf004ddba89, sessionid=f8576122f6bd765e39f8fdf004ddba89, sessionid_ss=f8576122f6bd765e39f8fdf004ddba89, sid_ucp_v1=1.0.0-KDg3OTZmZWM0Y2ZlYzU4YjEzMWM3NzI3MGY1M2E5MGVmMDNkMWM2YjEKGAibiIaO5Or-9mMQ5tS0tAYY90A4BkCACBADGgNzZzEiIGY4NTc2MTIyZjZiZDc2NWUzOWY4ZmRmMDA0ZGRiYTg5, ssid_ucp_v1=1.0.0-KDg3OTZmZWM0Y2ZlYzU4YjEzMWM3NzI3MGY1M2E5MGVmMDNkMWM2YjEKGAibiIaO5Or-9mMQ5tS0tAYY90A4BkCACBADGgNzZzEiIGY4NTc2MTIyZjZiZDc2NWUzOWY4ZmRmMDA0ZGRiYTg5, tt-target-idc-sign=P5hPyx-vxeMv7Elf8HQ0rNx9tMW_wHbFTUT0YXr89LNR5FvQ0aryIhzal2o_slby_NWtD1bfaGxodchlmNaC3wulb84lB_L6Mw_RIcIXqgVf1sBrchGAlpGl9inc1yrTFmnxWwdboU5FPAKwXUc7eN4DM8ItWRUyf8Wfslm59YR93hZ2Iv-GDRSgOEjKLaNvzpYZO9Z1jPwT591eB_-5TiZHC3SYJAmdoKFwqC1kZ4wVENDnP80g8VtdeaUiyuCBX2_2oOHrxCEiPGeVltdkAHObdvKnJLSUdvslLO9y5bQei4eEtMFSA36iqpQkS5Ereu7nDMyHQmK7Y4EoZXEJSEg5FIHPXvK_RT9oDeSzv9EhY6eX34aNC6IOCrE9RV3Xh7g-5RzWmNeEW70QjVpWp7v8VXLsd_WGk09iyzLaz2LR0KC5MiW3YSzCPYypGsb4_YugVjPkxGKU2AYnwr0qTGgATlmK64DZMB2iWaoJyyHM84PtWqBTPc06LeNEaLCt, odin_tt=6de84fd677e76bf33825283b5dbb39b3e564f6b824874c9a106b5edea719c2d23c7773206b6a2939b5040f5248582d4809893f8b3306d980f364b7ccfcc376ece21fa62ad34935976e5b78fd4d9c8442, msToken=cc6erOTpqJJw_poA-WCYe-iZ9CxU44d5iWe-9k_7Xhf5f9XUC0EnUp2m5f7FGtv173B2i3n_HYSXmcA3lvW0ldKu1AQImXf6DmkYJpmLTM3y",
+        "sec-fetch-dest": "empty",
+        "sec-fetch-mode": "cors",
+        "sec-fetch-site": "cross-site",
+        "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) TikTokLIVEStudio/0.61.0 Chrome/108.0.5359.215 Electron/22.3.18-tt.8.release.main.38 TTElectron/22.3.18-tt.8.release.main.38 Safari/537.36",
+        "x-ss-dp": "",
+        "x-ss-tc": "",
+        "response-format": "protobuf",
+        "sdk_aid": "8311",
+        "sec-ch-ua": "\"Not?A_Brand\";v=\"8\", \"Chromium\";v=\"108\"",
         "sec-ch-ua-mobile": "?0",
-        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/123.0.0.0 Safari/537.36",
         "sec-ch-ua-platform": "\"Windows\"",
-        "Accept": "image/avif,image/webp,image/apng,image/svg+xml,image/*,*/*;q=0.8",
-        "Sec-Fetch-Site": "same-site",
-        "Sec-Fetch-Mode": "no-cors",
-        "Sec-Fetch-Dest": "image",
-        "Referer": "https://www.baidu.com/s?ie=utf-8&f=8&rsv_bp=1&rsv_idx=1&tn=baidu&wd=python%E5%AF%BC%E5%8C%85%E9%97%AE%E9%A2%98&fenlei=256&oq=python%25E5%25AF%25BC%25E5%258C%2585%25E9%2597%25AE%25E9%25A2%2598&rsv_pq=894217ef004413c8&rsv_t=509cAZcwVC49vs8AKU1BdmUyHoNhqwsoQnRxAiIc1IrpTrrxw8XAuyCppBs&rqlang=cn&rsv_enter=0&rsv_dl=tb&rsv_btype=t",
-        "Accept-Encoding": "gzip, deflate, br, zstd",
-        "Accept-Language": "zh-CN,zh;q=0.9",
-        "Cookie": "BIDUPSID=8B498873ECFB91256731C3D46B10A3FE; PSTM=1710074163; BAIDUID=8B498873ECFB9125A32A6A6CC625FD38:FG=1; H_PS_PSSID=40008_40212_40079_40365_40351_40369_40379_40416_40310_40298_40466_40458_40481_40317_40514; BDORZ=B490B5EBF6F3CD402E515D22BCDA1598; BAIDUID_BFESS=8B498873ECFB9125A32A6A6CC625FD38:FG=1; ZFY=3UsGEeVfrKyvWk1dQqxfFz1qQZrk2Jz:Agtm4V954ij0:C; BA_HECTOR=81ahakala081008021012180u9venk1ivvjbj1s; PSINO=6; delPer=0"
+        "webcast-ntp-t0": "4783570.700000018",
+        "x-ss-stub": "116d3a438d86e12b5aef44aa19598d5b",
+        "x-tt-store-region": "vn",
+        "x-argus": "YDzW0YdfR7jePA8emQ/eCw/hloEDMEJGMe5MKd1/TQkYmmc2pycWW2pRDe4vd7tvoDJtWobW1WZYs4rNaBhdZjmc0YeYSodnqaAWCDOAsUMFCJdSDYFyH6lfGx94tQL/KxRvLSqOvqfWXdPELWkmMc/pcpqGtKzHY8CxzfCeehwP+MNFS9aLR0XQrRZGZ2PZeWAyEjsdRK4u2KjkPKbXZlBFIW6xLOFCZrCpKs6+pktOjTAsR54ABhYcTC51tMcrLeE=",
+        "x-khronos": "1720686209",
+        "x-ladon": "PwcAAHEw+7J597iZC/7Jf/77yqg7IzNEvBVpIy99Gmw+cwmo",
+        "Host": "webcast22-normal-c-alisg.tiktokv.com"
     }
 }

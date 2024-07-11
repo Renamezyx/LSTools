@@ -1,8 +1,6 @@
-import time
-
 from requests import sessions, Response
 import config
-from logger_base import logger
+from common.logger_base import logger
 
 
 def log_request_response(func):
@@ -31,7 +29,6 @@ class RequestBase(object):
 
     @log_request_response
     def request(self, method: str, url: str, **kwargs) -> Response:
-        time.sleep(1)  # 降低频率 防止检测 服务崩溃
         if self.debug:
             res: Response = self.session.request(method=method, url=url, verify=False, proxies=self.proxies, **kwargs)
         else:

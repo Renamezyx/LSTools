@@ -1,7 +1,7 @@
 import subprocess
 import time
 
-from proxy import Proxy
+from scripts.proxy import Proxy
 
 
 class MitmProxyManager:
@@ -32,10 +32,10 @@ class SCRIPT(object):
     def apply_proxy_script(script_path):
         def decorator_repeat(func):
             def wrapper(*args, **kwargs):
-                manager = MitmProxyManager(["mitmdump", "-s", script_path, "-p", "8002"])
+                manager = MitmProxyManager(["mitmdump", "-s", script_path, "-p", "8003"])
                 proxy = Proxy()
                 manager.start()
-                proxy.set_proxy("127.0.0.1:8002")
+                proxy.set_proxy("127.0.0.1:8003")
                 func(*args, **kwargs)
                 manager.stop()
                 proxy.default_proxy()
@@ -46,7 +46,7 @@ class SCRIPT(object):
 
 
 if __name__ == '__main__':
-    @SCRIPT.apply_proxy_script("./scripts/get_cookies_baidu_script.py")
+    @SCRIPT.apply_proxy_script("./scripts/get_cookies_tiktokv_script.py")
     def dosomething(sleep_time):
         while True:
             time.sleep(sleep_time)

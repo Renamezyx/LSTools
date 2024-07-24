@@ -2,7 +2,7 @@ import os
 from werkzeug.utils import secure_filename
 from config import get_project_root
 
-# 上传文件的保存路径（请根据需要调整）
+# 上传文件的保存路径
 UPLOAD_FOLDER = os.path.join(get_project_root(), "temp")
 ALLOWED_EXTENSIONS = {'zip'}
 

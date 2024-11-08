@@ -5,15 +5,15 @@ from services import local_service
 from response_base import response
 from flask_restx import Resource
 
-ns_test = api.namespace('Test', description='Test operations')
+# ns_test = api.namespace('Test', description='Test operations')
 ns_local = api.namespace('Local', description='Local operations')
 
 
-@ns_test.route('/test')
-class Test(Resource):
-    @ns_test.doc(description='这是一个测试接口')
-    def get(self):
-        return "hello"
+# @ns_test.route('/test')
+# class Test(Resource):
+#     @ns_test.doc(description='这是一个测试接口')
+#     def get(self):
+#         return "hello"
 
 
 @ns_local.route('/open_log_dir')

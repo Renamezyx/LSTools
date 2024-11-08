@@ -1,21 +1,31 @@
 import json
-import os
 
-
+import config
 from common.request_base import request
-from config import get_project_root
 from enums.studio_battle_enum import BattleStatusEnum
 from services.local_service import catch_exceptions, studio
-from utils.json_file_handler import JSONFileHandler
 
 
-@catch_exceptions
+def get_headers(host=".tiktokv.com"):
+    headers = {"Cookie": config.get_cookies(host)}
+    res = request(method="GET",
+                  url="https://tnc16-platform-useast1a.tiktokv.com/get_domains/v4/?aid=8311&device_platform=win&tnc_src=6&ttwebview_version=1130022001",
+                  headers=headers)
+    if res.status_code == 200:
+        for i in res.json()["data"]["ttnet_dispatch_actions"]:
+            if i["param"].get("service_name"):
+                if "idc_weight_webcast_normal" in i["param"].get("service_name"):
+                    headers["Host"] = i["param"]["strategy_info"]["webcast.tiktokv.com"]
+    return headers
+
+
+# @catch_exceptions
 def finish_pk():
+    headers = get_headers()
     battle_status_dict = {member.value: member.name for member in BattleStatusEnum}
     end_pb_str = studio.link_mic_battle_pb_by_log[-1]
     end_pb = json.loads(end_pb_str)
-    header = JSONFileHandler.read_json_file(os.path.join(get_project_root(), "headers.json"))
-    headers = header["tiktokv"]
+
     if end_pb["battle_settings"]["status"] == 1:
         channel_id = end_pb["battle_settings"]["channel_id"]
         battle_id = end_pb["battle_settings"]["battle_id"]
@@ -90,11 +100,11 @@ def finish_pk():
                 "finish_is_sdk": "1"
             }
             res = request(method="POST", url=f"https://{headers["Host"]}/webcast/battle/multi_finish/",
-                      headers=headers, params=params)
+                          headers=headers, params=params)
             return res
     else:
         return battle_status_dict[end_pb["battle_settings"]["status"]]
 
 
 if __name__ == '__main__':
-    print(type(finish_pk()))
+    print(get_headers())

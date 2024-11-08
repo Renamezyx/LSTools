@@ -30,6 +30,7 @@ class RequestBase(object):
     @log_request_response
     def request(self, method: str, url: str, **kwargs) -> Response:
         if self.debug:
+            print("debug")
             res: Response = self.session.request(method=method, url=url, verify=False, proxies=self.proxies, **kwargs)
         else:
             res: Response = self.session.request(method=method, url=url)

@@ -32,7 +32,7 @@ def upload_file(file, device_id):
     # 保存文件
     file.save(file_path)
 
-    #
+    # 解析数据
     data = format_ls_data(file_path, device)
     return {"message": "File successfully uploaded", "filename": filename, "path": file_path, "data": data}
 

@@ -52,5 +52,4 @@ def format_ls_data(path, device):
 
 if __name__ == '__main__':
     format_ls_data(
-        r"C:\Users\Admin\Desktop\LSTools\LSToolsFlask\sources\liveStudio_D\cd_2024_11_06_17_23_56_livestudio_2024_11_06_17_07_43.zip",
-        "liveStudio_D")
+        r"C:\Users\Admin\Desktop\LSTools\LSToolsFlask\temp\72_2025_01_07_19_36_44_screen_01","liveStudio_C")

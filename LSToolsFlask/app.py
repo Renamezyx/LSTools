@@ -10,7 +10,6 @@ from routes.preformance_routes import ns_performance
 
 def create_app():
     app = Flask(__name__)
-    # api.add_namespace(ns_test)
     api.add_namespace(ns_local)
     # api.add_namespace(ns_proxy)
     api.add_namespace(ns_request)

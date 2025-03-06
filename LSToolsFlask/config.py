@@ -34,7 +34,7 @@ def get_cookies(host):
     conn.close()
 
 
-DEVICE_IDS = {"liveStudio_C": [], "liveStudio_D": ["423C3B0D-D6EA-4520-B11D-077A5477D914"], "liveStudio_A": ["283D927A-4680-498B-84C0-EE942187F6D7"]}
+DEVICE_IDS = {"liveStudio_C": ["B7904533-06CF-624C-B2BA-ABE1772FA015"], "liveStudio_D": ["423C3B0D-D6EA-4520-B11D-077A5477D914"], "liveStudio_A": ["283D927A-4680-498B-84C0-EE942187F6D7"]}
 # 上传文件的保存路径
 UPLOAD_ROOT = os.path.join(get_project_root(), "sources")
 ALLOWED_EXTENSIONS = {'zip'}
@@ -49,8 +49,8 @@ ls_get_data_rules = {
             "GPU3D_MediaSDK进程-A卡独显数据": r"gpu_3d_avg[\s\S]+?mediasdk_server_AMD_Radeon_RX_6700M: (.*)\n",
             "GPU3D_整体": r"livestudio:[\s\S]+?GPU 3D 占用: [\s\S]+?AMD_Radeon_RX_6700M: (.*)%",
             "gpu_encode": r"",
-            "内存占用(MB)_electron进程": r"memory_avg[\s\S]+?tiktok_live_studio: (.*)\n",
-            "内存占用(MB)_sdk进程": r"memory_avg[\s\S]+?mediasdk_server: (.*)\n",
+            "内存占用(MB)_electron进程": r"memory_avg[\s\S]+?tiktok_live_studio: (.*)MB\n",
+            "内存占用(MB)_sdk进程": r"memory_avg[\s\S]+?mediasdk_server: (.*)MB\n",
             "内存占用(MB)_整体": r"livestudio:[\s\S]+?内存占用： (.*)MB",
             "数据留存1": "",
             "编码帧率2": "主画布编码帧率： (.*)",

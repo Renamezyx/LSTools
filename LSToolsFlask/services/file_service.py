@@ -35,3 +35,8 @@ def upload_file(file, device_id):
     # 解析数据
     data = format_ls_data(file_path, device)
     return {"message": "File successfully uploaded", "filename": filename, "path": file_path, "data": data}
+
+
+if __name__ == '__main__':
+    format_ls_data(r"C:\Users\Admin\Desktop\LSTools\LSToolsFlask\temp\2d_2025_01_07_17_04_44_screen_03_1",
+                   "liveStudio_C")

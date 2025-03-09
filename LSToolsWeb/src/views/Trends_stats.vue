@@ -80,6 +80,7 @@ export default {
             series: newLegend.map(item => ({
               name: item,
               type: 'line',
+              smooth: true,
               data: data.data.chartData[item]
             }))
           });

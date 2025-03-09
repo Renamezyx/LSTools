@@ -2,7 +2,7 @@ import time
 import winreg
 
 
-class Proxy(object):
+class ProxySetting(object):
     def __init__(self):
         self.o_proxy_server = self.get_proxy
 
@@ -34,7 +34,7 @@ class Proxy(object):
 
 
 if __name__ == '__main__':
-    proxy = Proxy()
+    proxy = ProxySetting()
     proxy.set_proxy("127.0.0.1:8002")
     time.sleep(20)
     proxy.default_proxy()

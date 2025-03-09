@@ -27,15 +27,6 @@ def catch_exceptions(func):
 
 
 @catch_exceptions
-def open_logs_dir():
-    """
-    打开本地 studio logs 文件夹
-    :return:
-    """
-    studio.open_dir("{0}\\logs".format(studio.studio_data_path))
-
-
-@catch_exceptions
 def open_language_dir():
     """
     打开本地 studio 多语言 文件夹
@@ -44,49 +35,6 @@ def open_language_dir():
     if studio.version:
         studio.open_dir(
             '{0}\\{1}\\resources\\app\\locales\\Live_Studio'.format(studio.studio_file_path, studio.version))
-
-
-@catch_exceptions
-def switch_branch():
-    """
-    切换 studio分支
-    如果是 release 切换成 非 release
-    如果是 非 release 切换成 release
-    :return:
-    """
-    build_id = "11654054"
-    if studio.branch == "studio/release/stable":
-        value = "1"
-    else:
-        value = "studio/release/stable"
-    JSONFileHandler.update_json(
-        file_path=os.path.join(studio.studio_file_path, studio.version, 'resources\\app\\package.json'),
-        key="branch", value=value)
-    JSONFileHandler.update_json(
-        file_path=os.path.join(studio.studio_file_path, studio.version, 'resources\\app\\package.json'),
-        key="build_id", value=build_id)
-    return value
-
-
-@catch_exceptions
-def update_effects():
-    """
-    删除 studio本地美颜缓存
-    :return:
-    """
-    local_store_path = os.path.join(studio.studio_data_path, "TTStore", "localStore.json")
-    if os.path.exists(local_store_path):
-        os.remove(local_store_path)
-
-
-@catch_exceptions
-def clear_screen():
-    """
-    清空 studio本地场景
-    :return:
-    """
-    store_path = os.path.join(studio.studio_data_path, "TTStore", "store.json")
-    JSONFileHandler.delete_json_key(store_path, "source")
 
 
 @catch_exceptions
@@ -150,4 +98,4 @@ def client_ab_list_listener(id=None, key=None) -> str:
 
 
 if __name__ == '__main__':
-    print(switch_branch())
+    pass

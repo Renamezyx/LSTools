@@ -25,17 +25,6 @@ class LocalControl(object):
         curr_version_path = max(folders, key=self.get_folder_size)
         return curr_version_path.split('\\')[-1]
 
-    @property
-    def branch(self) -> str:
-        """
-        获取studio的分支信息
-        :return: str
-        """
-        package = JSONFileHandler.read_json_file(
-            file_path=os.path.join(self.studio_file_path, self.version, 'resources\\app\\package.json'))
-        branch = package['branch']
-        return branch
-
     def open_dir(self, path: str) -> None:
         """
         打开指定目录

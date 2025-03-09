@@ -34,7 +34,9 @@ def get_cookies(host):
     conn.close()
 
 
-DEVICE_IDS = {"liveStudio_C": ["B7904533-06CF-624C-B2BA-ABE1772FA015"], "liveStudio_D": ["423C3B0D-D6EA-4520-B11D-077A5477D914"], "liveStudio_A": ["283D927A-4680-498B-84C0-EE942187F6D7"]}
+DEVICE_IDS = {"liveStudio_C": ["B7904533-06CF-624C-B2BA-ABE1772FA015"],
+              "liveStudio_D": ["423C3B0D-D6EA-4520-B11D-077A5477D914"],
+              "liveStudio_A": ["283D927A-4680-498B-84C0-EE942187F6D7"]}
 # 上传文件的保存路径
 UPLOAD_ROOT = os.path.join(get_project_root(), "sources")
 ALLOWED_EXTENSIONS = {'zip'}
@@ -75,3 +77,5 @@ ls_get_data_rules = {
 }
 
 DEBUG = 1
+
+db_path = os.path.join(get_project_root(), "database.db")

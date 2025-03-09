@@ -8,18 +8,6 @@ from flask_restx import Resource
 ns_local = api.namespace('Local', description='Local operations')
 
 
-@ns_local.route('/open_log_dir')
-class OpenLogsDir(Resource):
-    @ns_local.doc(description='打开 studio logs 文件夹')
-    def get(self):
-        response.start()
-        res = local_service.open_logs_dir()
-        response.code = 0
-        response.data = {}
-        response.message = res if res is not None else ''
-        return jsonify(response.run_speed)
-
-
 @ns_local.route('/open_language_dir')
 class OpenLanguageDir(Resource):
     @ns_local.doc(description='打开 studio language 文件夹')

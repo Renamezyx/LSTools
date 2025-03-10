@@ -16,7 +16,7 @@ export default {
     }
 
     const option = reactive({
-      title: { text: '实时数据监控' },
+      title: { text: '' },
       tooltip: {
         trigger: 'axis',
         formatter: function (params) {
@@ -48,7 +48,7 @@ export default {
       myChart = echarts.init(chartDom);
       myChart.setOption(option);
 
-      const socket = io("ws://localhost:8080", { transports: ["websocket"] });
+      const socket = io("ws://localhost:8080", {path:"/ws", transports: ["websocket"] });
 
       socket.on("connect", () => {
         console.log("Socket.IO 连接成功", socket.id);

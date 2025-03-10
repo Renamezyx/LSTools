@@ -1,4 +1,4 @@
-from scripts.trends_stats.dao_trends_stats import DaoTrendsStats
+from dao.dao_trends_stats import DaoTrendsStats
 
 
 def get_trends_stats(start_time=None):

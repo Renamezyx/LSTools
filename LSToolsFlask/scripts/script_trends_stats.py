@@ -32,7 +32,7 @@ def get_process_memory_usage(cmdline_filter=None):
 
 
 if __name__ == "__main__":
-    from .dao_trends_stats import DaoTrendsStats
+    from dao.dao_trends_stats import DaoTrendsStats
 
     res = DaoTrendsStats.delete()
     print(res)

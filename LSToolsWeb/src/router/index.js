@@ -1,6 +1,8 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import Index from '../views/index.vue'
 import TrendsStats from '../views/Trends_stats.vue'
+import PushStream from '../views/push_stream.vue'
+
 const routes = [
   {
     path: '/',
@@ -16,6 +18,11 @@ const routes = [
     path: '/trends_stats',
     name: 'TrendsStats',
     component: TrendsStats
+  },
+  {
+    path: '/push_stream',
+    name: 'PushStream',
+    component: PushStream
   }
 ]
 

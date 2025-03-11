@@ -34,8 +34,8 @@ def get_process_memory_usage(cmdline_filter=None):
 if __name__ == "__main__":
     from dao.dao_trends_stats import DaoTrendsStats
 
-    res = DaoTrendsStats.delete()
-    print(res)
+    # res = DaoTrendsStats.delete()
+    # print(res)
     while True:
         processes = get_process_memory_usage(cmdline_filter="TikTok Live Studio")
         res = DaoTrendsStats.insert([tuple(i.values()) for i in processes])

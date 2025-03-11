@@ -37,16 +37,16 @@ class DaoScriptStorage(object):
         return res
 
     @staticmethod
-    def select(create_time=None):
+    def select(name=None):
         sql = """
         select * from script_storage
         """
         params = ()  # 默认无参数
 
         # 如果提供了 `create_time`，加上 WHERE 条件
-        if create_time is not None:
-            sql += " WHERE create_time <= ?"
-            params = (create_time,)
+        if name is not None:
+            sql += " WHERE name <= ?"
+            params = (name,)
 
         # 执行查询
         print("select")

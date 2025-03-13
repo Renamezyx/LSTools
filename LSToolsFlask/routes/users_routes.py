@@ -4,7 +4,7 @@ from response_base import response
 from routes import api
 from dao.dao_users import DaoUsers
 
-ns_users = api.namespace('Users', description='Users operations')
+ns_users = api.namespace('users', description='Users operations')
 
 users_model = api.model('UsersModel', {
     'headers': fields.String(description="headers"),
@@ -13,7 +13,7 @@ users_model = api.model('UsersModel', {
 })
 
 
-@ns_users.route("/users/insert")
+@ns_users.route("/insert")
 class UsersInsert(Resource):
     @api.expect(users_model)
     def post(self):
@@ -35,7 +35,7 @@ class UsersInsert(Resource):
             return jsonify(response.run_speed)
 
 
-@ns_users.route("/users/update")
+@ns_users.route("/update")
 class UsersUpdate(Resource):
     @api.expect(users_model)
     def post(self):
@@ -58,7 +58,7 @@ class UsersUpdate(Resource):
             return jsonify(response.run_speed)
 
 
-@ns_users.route("/users/delete")
+@ns_users.route("/delete")
 class UsersDelete(Resource):
     @api.expect(users_model)
     def post(self):
@@ -82,7 +82,7 @@ parser = reqparse.RequestParser()
 parser.add_argument('phone', type=str, required=False, help="手机号")
 
 
-@ns_users.route("/users/select")
+@ns_users.route("/select")
 class StreamStats(Resource):
     @api.expect(parser)
     def get(self):

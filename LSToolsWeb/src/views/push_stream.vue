@@ -1,15 +1,18 @@
 <template>
     <el-table :data="tableData" style="width: 100%" max-height="600">
         <el-table-column fixed prop="date" label="Date" width="150" sortable />
-        <el-table-column prop="name"  label="Name" width="120" />
+        <el-table-column prop="name" label="Name" width="120" />
         <el-table-column prop="stats" label="Stats" width="120" sortable>
             <template #default="scope">
-                <el-tag type="primary" effect="light" v-if="scope.row.stats == 0">{{ stats_format(scope.row.stats) }}</el-tag> 
-                <el-tag type="success" effect="light" v-if="scope.row.stats == 1">{{ stats_format(scope.row.stats) }}</el-tag> 
-                <el-tag type="danger" effect="light" v-if="scope.row.stats == -1">{{ stats_format(scope.row.stats) }}</el-tag> 
+                <el-tag type="primary" effect="light" v-if="scope.row.stats == 0">{{ stats_format(scope.row.stats)
+                }}</el-tag>
+                <el-tag type="success" effect="light" v-if="scope.row.stats == 1">{{ stats_format(scope.row.stats)
+                }}</el-tag>
+                <el-tag type="danger" effect="light" v-if="scope.row.stats == -1">{{ stats_format(scope.row.stats)
+                }}</el-tag>
             </template>
         </el-table-column>
-        <el-table-column prop="account"  label="Account" width="120" />
+        <el-table-column prop="account" label="Account" width="120" />
         <el-table-column prop="cookies" label="Cookies" width="600" show-overflow-tooltip />
         <el-table-column fixed="right" label="Operations" min-width="220">
             <template #default="scope">
@@ -25,15 +28,50 @@
             </template>
         </el-table-column>
     </el-table>
-    <el-button class="mt-4" style="width: 100%" @click="add">
+    <el-button class="mt-4" style="width: 100%" @click="openDrawer('add')">
         Add Item
     </el-button>
+    <el-drawer v-model="drawer" title="Input" :direction="direction" :before-close="handleClose">
+        <el-form label-width="100px">
+            <el-form-item label="UserName">
+                <el-input v-model="User.username" style="width: 240px" placeholder="Please input your username"
+                    clearable />
+            </el-form-item>
+
+            <el-form-item label="Phone">
+                <el-input v-model="User.phone" style="width: 240px" placeholder="Please input your phone number"
+                    clearable />
+            </el-form-item>
+
+            <el-form-item label="Headers">
+                <el-input v-model="User.headers" style="width: 240px" :autosize="{ minRows: 2, maxRows: 4 }"
+                    type="textarea" placeholder="Please input your headers" />
+            </el-form-item>
+        </el-form>
+        <template #footer>
+            <div style="flex: auto">
+                <el-button @click="cancelClick">cancel</el-button>
+                <el-button type="primary" @click="confirmClick">confirm</el-button>
+            </div>
+        </template>
+    </el-drawer>
+
 </template>
 
 <script lang="ts" setup>
-import { ref } from 'vue'
-import dayjs from 'dayjs'
+import { ref, reactive } from 'vue'
+import type { DrawerProps } from 'element-plus'
+import { ElMessageBox } from 'element-plus'
+import service from '@/utils/request'
 
+const User = reactive({
+    "username": "",
+    "phone": "",
+    "headers": ""
+})
+
+const drawer = ref(false)
+const direction = ref<DrawerProps['direction']>('rtl')
 const now = new Date()
 
 const tableData = ref([
@@ -54,7 +92,7 @@ const tableData = ref([
         stats: 0
     },
     {
-        id:3,
+        id: 3,
         date: '2016-05-03',
         name: 'Tom',
         account: '123',
@@ -75,8 +113,14 @@ const del = (index: number) => {
     console.log("del")
 }
 
-const add = () => {
-    console.log("add")
+const openDrawer = (type: string) => {
+    if (type == "add") {
+        User.username = ""
+        User.phone = ""
+        User.headers = ""
+    }
+    drawer.value = true
+
 }
 
 const stats_format = (stats: number) => {
@@ -91,6 +135,40 @@ const stats_format = (stats: number) => {
             return "未知"
     }
 }
+
+const handleClose = (done: () => void) => {
+    ElMessageBox.confirm('Are you sure you want to close this?')
+        .then(() => {
+            done()
+        })
+        .catch(() => {
+            // catch error
+        })
+}
+
+const cancelClick = () => {
+    drawer.value = false
+    console.log("cancel")
+}
+
+const confirmClick = async () => {
+    console.log("confirm")
+
+    try {
+        const response = await service.post('/users/insert', {
+            username: User.username,
+            phone: User.phone,
+            headers: User.headers
+        })
+        console.log('Response:', response)
+
+        // 只有请求成功后，才关闭抽屉
+        drawer.value = false  
+    } catch (error) {
+        console.error('Request failed:', error)
+    }
+}
+
 </script>
 
 <style scoped></style>

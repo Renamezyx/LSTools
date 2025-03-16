@@ -22,11 +22,11 @@ class DaoUsers(object):
         return res
 
     @staticmethod
-    def delete(phone):
-        sql = "delete from users where phone=?"
+    def delete(id):
+        sql = "delete from users where id=?"
         # 执行删除操作
         sql_tools = SQLiteTools(db_path=db_path)
-        res = sql_tools.execute_non_query(query=sql, params=(phone,))  # 返回受影响的行数
+        res = sql_tools.execute_non_query(query=sql, params=(id,))  # 返回受影响的行数
         sql_tools.close()
         return res
 
@@ -49,18 +49,9 @@ class DaoUsers(object):
         return res
 
     @staticmethod
-    def update(headers, username, phone):
-        params = ()
-        if headers and username:
-            sql = "update users set headers=?, username=? where phone=?"
-            params = (headers, username, phone)
-        elif headers:
-            sql = "update users set headers=? where phone =?"
-            params = (headers, phone)
-        elif username:
-            sql = "update users set username=? where phone =?"
-            params = (username, phone)
+    def update(headers, username, phone, id):
+        sql = "update users set headers=?, username=?, phone=? where id = ?"
         sql_tools = SQLiteTools(db_path=db_path)
-        res = sql_tools.execute_non_query(query=sql, params=params)
+        res = sql_tools.execute_non_query(query=sql, params=(headers, username, phone, id))
         sql_tools.close()
         return res

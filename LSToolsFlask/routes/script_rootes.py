@@ -1,6 +1,6 @@
 from flask import jsonify
 from flask_restx import Resource, fields, reqparse
-from services.script_service import script_start, script_stop
+from services.script_service import ScriptService
 from response_base import response
 from routes import api
 
@@ -33,7 +33,7 @@ class ScriptStart(Resource):
         req_data = request.get_json()
         script_name = req_data.get("script_name")
         script_params = req_data.get("script_params", [])
-        res = script_start(script_name, script_params)
+        res = ScriptService.script_start(script_name, script_params)
         response.code = 0
         response.data = res
         response.message = "success"
@@ -54,6 +54,6 @@ class ScriptStop(Resource):
         pid = args.get("pid", None)
         script_name = args.get("script_name", "")
         response.code = 0
-        response.data = script_stop(pid=pid, script_name=script_name)
+        response.data = ScriptService.script_stop(pid=pid, script_name=script_name)
         response.message = "success"
         return jsonify(response.run_speed)

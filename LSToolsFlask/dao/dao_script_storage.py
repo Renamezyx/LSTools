@@ -6,7 +6,7 @@ from utils.sqlite_tools import SQLiteTools
 
 class DaoScriptStorage(object):
     @staticmethod
-    def insert(values: list or tuple) -> int:
+    def insert(pid, name, cmdline) -> int:
         sql = """
         insert into script_storage (pid, name, cmdline)
         values (?,?,?)
@@ -14,15 +14,13 @@ class DaoScriptStorage(object):
         res = -1
         print("insert")
         sql_tools = SQLiteTools(db_path=db_path)
-        if type(values) is tuple:
-            res = sql_tools.execute_non_query(query=sql, params=values)
-        if type(values) is list:
-            res = sql_tools.execute_many(query=sql, params_list=values)
+        res = sql_tools.execute_non_query(sql, params=(pid, name, cmdline))
         sql_tools.close()
         return res
 
     @staticmethod
     def delete(pid=None):
+        print("delete")
         sql = "delete from script_storage"
         if pid is not None:
             sql += " WHERE pid <= ?"

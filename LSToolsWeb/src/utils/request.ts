@@ -1,5 +1,5 @@
 import axios from 'axios'
-import { ElLoading } from 'element-plus'
+import { ElLoading, ElMessage } from 'element-plus'
 
 // 定义 loading 变量和请求计数器
 let loadingInstance: any = null
@@ -48,11 +48,34 @@ service.interceptors.request.use(
 service.interceptors.response.use(
   (response) => {
     hideLoading()
-    return response.data
+    if (response.status !== 200 && String(response.status)[0] !== '2' && String(response.status)[0] !== '3') {
+      ElMessage({
+        message: 'server error',
+        type: 'error',
+        plain: true,
+      })
+    } else if (response.data.code !== 0) {
+      ElMessage({
+        message: response.data.message,
+        type: 'error',
+        plain: true,
+      })
+    } else {
+      ElMessage({
+        message: response.data.message,
+        type: 'success',
+        plain: true,
+      })
+    }
+    return response
   },
   (error) => {
     hideLoading()
-    console.error('Request error:', error) // 记录错误信息
+    ElMessage({
+      message: String(error),
+      type: 'error',
+      plain: true,
+    });
     return Promise.reject(error)
   }
 )

@@ -76,6 +76,6 @@ ls_get_data_rules = {
     "liveStudio_E": {}
 }
 
-DEBUG = 1
+DEBUG = 0
 
 db_path = os.path.join(get_project_root(), "database.db")

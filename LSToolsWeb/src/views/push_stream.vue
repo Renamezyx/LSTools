@@ -10,13 +10,15 @@
                     }}</el-tag>
                 <el-tag type="danger" effect="light" v-if="scope.row.stats == -1">{{ stats_format(scope.row.stats)
                     }}</el-tag>
+                <el-tag type="info" effect="light" v-if="!(scope.row.stats in [0,1,-1])">{{ stats_format(scope.row.stats)
+                    }}</el-tag>
             </template>
         </el-table-column>
         <el-table-column prop="phone" label="phone" width="120" />
         <el-table-column prop="cookies" label="Cookies" width="600" show-overflow-tooltip />
         <el-table-column fixed="right" label="Operations" min-width="220">
             <template #default="scope">
-                <el-button link type="primary" size="small" @click.prevent="push(scope.row.id)">
+                <el-button link type="primary" size="small" @click.prevent="push(scope.row.phone)">
                     Push
                 </el-button>
                 <el-button link type="info" size="small" @click.prevent="openDrawer('edit', scope.row)">
@@ -77,9 +79,18 @@ const direction = ref<DrawerProps['direction']>('rtl')
 
 const users = ref([])
 
-const push = (id: number) => {
-    console.log("push")
-    console.log(id)
+const push = async (phone: number) => {
+    try{
+        const response = await service.post('/stream/push', {
+            phone: phone
+        })
+        if (response.data.code == 0) {
+            ElMessage.success('Push Success')
+        }
+    }
+    catch (error) {
+        console.error('Request failed:', error)
+    }
 }
 
 
@@ -131,6 +142,8 @@ const stats_format = (stats: number) => {
         case 0:
             return "空闲"
         case 1:
+            return "脚本直播中"
+        case 2:
             return "直播中"
         case -1:
             return "cookies过期"
@@ -194,7 +207,7 @@ const select = async (phone: number | undefined = undefined) => {
             ...item,  // 保留原始属性
             date: new Date(item.update_time * 1000).toLocaleDateString(),
             cookies: item.headers,
-            stats: 0,
+            stats: item.stats,
             phone: item.phone,
             name: item.username,
         }))

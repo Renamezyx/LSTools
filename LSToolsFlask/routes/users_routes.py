@@ -93,7 +93,7 @@ class UserSelect(Resource):
         response.start()
         args = parser.parse_args()
         phone = args.get("phone", None)
-        res = UsersService.users_select(phone=phone)
+        res = UsersService.users_select(phone=phone, script_name="push_script")
         response.code = 0
         response.data = res
         response.message = "success"

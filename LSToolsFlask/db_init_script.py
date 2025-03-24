@@ -16,6 +16,7 @@ sql_script_storage = """
             id INTEGER PRIMARY KEY AUTOINCREMENT,
             pid INTEGER NOT NULL,
             name TEXT NOT NULL,
+            user_phone TEXT;
             cmdline TEXT,
             create_time INTEGER DEFAULT (strftime('%s', 'now')))
 """

@@ -6,15 +6,15 @@ from utils.sqlite_tools import SQLiteTools
 
 class DaoScriptStorage(object):
     @staticmethod
-    def insert(pid, name, cmdline) -> int:
+    def insert(pid, name, cmdline, user_phone) -> int:
         sql = """
-        insert into script_storage (pid, name, cmdline)
-        values (?,?,?)
+        insert into script_storage (pid, name, cmdline,user_phone)
+        values (?,?,?,?)
         """
         res = -1
         print("insert")
         sql_tools = SQLiteTools(db_path=db_path)
-        res = sql_tools.execute_non_query(sql, params=(pid, name, cmdline))
+        res = sql_tools.execute_non_query(sql, params=(pid, name, cmdline, user_phone))
         sql_tools.close()
         return res
 
@@ -35,21 +35,27 @@ class DaoScriptStorage(object):
         return res
 
     @staticmethod
-    def select(name=None):
-        sql = """
-        select * from script_storage
-        """
-        params = ()  # 默认无参数
+    def select(name=None, user_phone=None, pid=None):
+        sql = "SELECT * FROM script_storage"
+        params = []  # 改为列表，避免元组拼接问题
 
-        # 如果提供了 `create_time`，加上 WHERE 条件
+        conditions = []
         if name is not None:
-            sql += " WHERE name <= ?"
-            params = (name,)
+            conditions.append("name = ?")
+            params.append(name)
+        if user_phone is not None:
+            conditions.append("user_phone = ?")
+            params.append(user_phone)
+        if pid is not None:
+            conditions.append("pid = ?")
+            params.append(pid)
 
-        # 执行查询
+        if conditions:
+            sql += " WHERE " + " AND ".join(conditions)
+
         print("select")
         sql_tools = SQLiteTools(db_path=db_path)
-        res = sql_tools.execute_query(query=sql, params=params)
+        res = sql_tools.execute_query(query=sql, params=tuple(params))
         sql_tools.close()
         if res:
             res = [dict(row) for row in res]

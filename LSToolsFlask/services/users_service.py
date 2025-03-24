@@ -1,3 +1,4 @@
+from dao.dao_script_storage import DaoScriptStorage
 from dao.dao_users import DaoUsers
 
 
@@ -39,7 +40,8 @@ class UsersService:
             return res
 
     @staticmethod
-    def users_select(phone=None) -> list:
+    def users_select(phone=None, script_name=None) -> list:
         dao_users = DaoUsers()
         res = dao_users.select(phone=phone)
+
         return res

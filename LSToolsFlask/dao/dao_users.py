@@ -33,17 +33,26 @@ class DaoUsers(object):
     @staticmethod
     def select(phone=None):
         sql = """
-            select * from users
+            SELECT * FROM users
         """
-        params = ()  # 默认无参数
+        params = []
+
+        conditions = []
         if phone is not None:
-            sql = sql + " where phone=?"
-            params = (phone,)
+            conditions.append("phone = ?")
+            params.append(phone)
+
+        # 只有当有筛选条件时，才拼接 WHERE
+        if conditions:
+            sql += " WHERE " + " AND ".join(conditions)
+
         # 执行查询
-        print("select")
+        print("SQL:", sql)
         sql_tools = SQLiteTools(db_path=db_path)
-        res = sql_tools.execute_query(query=sql, params=params)
+        res = sql_tools.execute_query(query=sql, params=tuple(params))
         sql_tools.close()
+
+        # 转换查询结果
         if res:
             res = [dict(row) for row in res]
         return res
@@ -53,5 +62,13 @@ class DaoUsers(object):
         sql = "update users set headers=?, username=?, phone=? where id = ?"
         sql_tools = SQLiteTools(db_path=db_path)
         res = sql_tools.execute_non_query(query=sql, params=(headers, username, phone, id))
+        sql_tools.close()
+        return res
+
+    @staticmethod
+    def update_state(id, state):
+        sql = "update users set state=? where id=?"
+        sql_tools = SQLiteTools(db_path=db_path)
+        res = sql_tools.execute_non_query(sql, params=(state, id))
         sql_tools.close()
         return res

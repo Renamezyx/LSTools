@@ -16,7 +16,7 @@ class ScriptService:
         ]}
 
     @staticmethod
-    def script_start(script_name: str, script_params: list = None):
+    def script_start_ws(script_name: str, user_phone: str = "", script_params: list = None):
         try:
             os.chdir(get_project_root())
             command = ScriptService.scripts[script_name]
@@ -27,10 +27,11 @@ class ScriptService:
             print("cmdline: ", full_command)
             process = subprocess.Popen(full_command, stdout=subprocess.PIPE,
                                        stderr=subprocess.STDOUT,
-                                       bufsize=1)
+                                       bufsize=-1)
 
             dao_script_storage = DaoScriptStorage()
-            dao_script_storage.insert(pid=process.pid, name=script_name, cmdline=str(full_command))
+            dao_script_storage.insert(pid=process.pid, name=script_name, cmdline=str(full_command),
+                                      user_phone=user_phone)
             try:
                 for line in iter(process.stdout.readline, b''):
                     yield {"code": 0, "pid": process.pid, "out": ScriptService._safe_decode(line).strip()}
@@ -42,6 +43,25 @@ class ScriptService:
         except Exception as e:
             print(e)
             yield {"code": -1, "error": str(e)}
+
+    def script_start(script_name: str, user_phone: str = "", script_params: list = None):
+        try:
+            os.chdir(get_project_root())
+            command = ScriptService.scripts[script_name]
+            if not isinstance(command, list):
+                command = [command]
+            full_command = command[:]
+            full_command.extend(script_params)
+            print("cmdline: ", full_command)
+            process = subprocess.Popen(full_command, stdout=subprocess.PIPE,
+                                       stderr=subprocess.STDOUT)
+
+            dao_script_storage = DaoScriptStorage()
+            dao_script_storage.insert(pid=process.pid, name=script_name, cmdline=str(full_command),
+                                      user_phone=user_phone)
+            return {"code": 0, "pid": process.pid}
+        except Exception as e:
+            return {"code": -1, "error": str(e)}
 
     @staticmethod
     def script_stop(pid: int = None, script_name: str = ""):

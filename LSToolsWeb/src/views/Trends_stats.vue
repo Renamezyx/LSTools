@@ -53,7 +53,7 @@ export default {
       socket.on("connect", () => {
         console.log("Socket.IO 连接成功", socket.id);
         setInterval(() => {
-          socket.emit("message", { func: "get_trends_stats" });
+          socket.emit("message", { func: "get_trends_stats",start_time: 1743045341 });
         }, 10000);
       });
 

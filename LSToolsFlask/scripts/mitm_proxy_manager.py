@@ -2,13 +2,13 @@ import subprocess
 
 
 class MitmProxyManager:
-    def __init__(self, cmd):
+    def __init__(self, cmd, cwd):
         self.cmd = cmd
         self.process = None
-
+        self.cwd = cwd
     def start(self):
         try:
-            self.process = subprocess.Popen(self.cmd)
+            self.process = subprocess.Popen(self.cmd, cwd=self.cwd)
             print("mitmdump started successfully.")
         except Exception as e:
             print("Error starting mitmdump:", e)

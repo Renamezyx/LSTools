@@ -8,8 +8,9 @@ from .preformance_routes import ns_performance
 from .script_rootes import ns_script
 from .stream_routes import ns_stream
 from .users_routes import ns_users
-
+from .proxy_routes import ns_proxy
 api.add_namespace(ns_local)
+api.add_namespace(ns_proxy)
 api.add_namespace(ns_request)
 api.add_namespace(ns_file)
 api.add_namespace(ns_performance)

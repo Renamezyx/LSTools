@@ -3,20 +3,10 @@ import sys
 
 from urllib.parse import urlparse
 from mitmproxy import http
-
+project_root = os.path.abspath(os.path.join(os.path.dirname(__file__), ".."))
+sys.path.insert(0, project_root)  # 保证优先级
 from config import get_project_root
 from utils.json_file_handler import JSONFileHandler
-
-# def get_project_root():
-#     # 获取根目录 不受运行目录影响
-#     current_dir = os.path.abspath(__file__)
-#     while not os.path.exists(os.path.join(current_dir, '.project_root')):
-#         current_dir = os.path.dirname(current_dir)
-#     return current_dir
-
-
-sys.path.append(os.path.join(get_project_root()))
-
 
 
 def request(flow: http.HTTPFlow):

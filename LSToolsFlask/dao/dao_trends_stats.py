@@ -41,6 +41,7 @@ class DaoTrendsStats(object):
 
     @staticmethod
     def select(create_time=None):
+        print(create_time)
         sql = """
             SELECT sum(mem_usage) as mem_usage, name, create_time
             FROM trends_stats

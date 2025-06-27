@@ -34,9 +34,10 @@ def get_cookies(host):
     conn.close()
 
 
-DEVICE_IDS = {"liveStudio_C": ["B7904533-06CF-624C-B2BA-ABE1772FA015"],
+DEVICE_IDS = {"liveStudio_C_1": ["B7904533-06CF-624C-B2BA-ABE1772FA015"],
               "liveStudio_D": ["423C3B0D-D6EA-4520-B11D-077A5477D914"],
-              "liveStudio_A": ["283D927A-4680-498B-84C0-EE942187F6D7"]}
+              "liveStudio_A": ["283D927A-4680-498B-84C0-EE942187F6D7"],
+              "liveStudio_E_1": ["AA727E4C-3093-11B2-A85C-ADDC47D41191"]}
 # 上传文件的保存路径
 UPLOAD_ROOT = os.path.join(get_project_root(), "sources")
 ALLOWED_EXTENSIONS = {'zip'}
@@ -58,6 +59,18 @@ ls_get_data_rules = {
             "编码帧率2": "主画布编码帧率： (.*)",
             "画布渲染帧率3": "渲染帧率： (.*)"
         },
+    "liveStudio_C_1": {
+        "CPU_整体": r"livestudio:[\s\S]+?CPU占用: (.*)%",
+        "CPU_aisdk_server": r"cpu_avg[\s\S]+?aisdk_server: (.*)\n",
+        "CPU_MediaSDK进程": r"cpu_avg[\s\S]+?mediasdk_server: (.*)\n",
+        "GPU3D_MediaSDK进程-A卡独显数据": r"gpu_3d_avg[\s\S]+?mediasdk_server: (.*)\n",
+        "内存占用(MB)_整体": r"livestudio:[\s\S]+?内存占用： (.*)MB",
+        "内存占用(MB)_aisdk_server": r"aisdk_server: (.*)MB",
+        "内存占用(MB)_sdk进程": r"memory_avg[\s\S]+?mediasdk_server: (.*)MB\n",
+        "画布渲染帧率3": "渲染帧率： (.*)",
+        "编码帧率2": "主画布编码帧率： (.*)"
+
+    },
     "liveStudio_D": {
         "CPU_electron进程": r"cpu_avg[\s\S]+?tiktok_live_studio: (.*)\n",
         "CPU_MediaSDK进程": r"cpu_avg[\s\S]+?mediasdk_server: (.*)\n",
@@ -73,7 +86,18 @@ ls_get_data_rules = {
         "编码帧率2": "主画布编码帧率： (.*)",
         "画布渲染帧率3": "渲染帧率： (.*)"
     },
-    "liveStudio_E": {}
+    "liveStudio_E": {},
+    "liveStudio_E_1": {
+        "CPU_整体": r"livestudio:[\s\S]+?CPU占用: (.*)%",
+        "CPU_aisdk_server": r"cpu_avg[\s\S]+?aisdk_server: (.*)\n",
+        "CPU_MediaSDK进程": r"cpu_avg[\s\S]+?mediasdk_server: (.*)\n",
+        "GPU3D_MediaSDK进程-A卡独显数据": r"gpu_3d_avg[\s\S]+?mediasdk_server: (.*)\n",
+        "内存占用(MB)_整体": r"livestudio:[\s\S]+?内存占用： (.*)MB",
+        "内存占用(MB)_aisdk_server": r"aisdk_server: (.*)MB",
+        "内存占用(MB)_sdk进程": r"memory_avg[\s\S]+?mediasdk_server: (.*)MB\n",
+        "画布渲染帧率3": "渲染帧率： (.*)",
+        "编码帧率2": "主画布编码帧率： (.*)"
+    }
 }
 
 DEBUG = 1

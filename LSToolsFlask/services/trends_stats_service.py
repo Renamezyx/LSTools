@@ -1,7 +1,7 @@
 from dao.dao_trends_stats import DaoTrendsStats
 
 
-def get_trends_stats(start_time=None):
+def get_trends_stats(start_time):
     res = {}
     dao = DaoTrendsStats.select(create_time=start_time)
     legend = set()
